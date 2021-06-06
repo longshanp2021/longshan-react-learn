@@ -35,6 +35,21 @@ div.card {
     div.content {
         height: 400px;
         border-top: 1px solid #b2bec3;
+        overflow: auto;
+
+        div.add-user {
+            display: flex;
+            padding: 4px 12px;
+
+            label {
+                width: 80px;
+                font-size: 18px;
+            }
+
+            .ipt-username {
+                margin-right: 12px;
+            }
+        }
 
         &.hide {
             display: none;
