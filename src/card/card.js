@@ -5,15 +5,20 @@ import * as icons from '@ant-design/icons';
 export class Card extends react.Component {
 
     hideHeader = false;
+
+    toggleHeader = () => {
+        this.hideHeader = !this.hideHeader;
+        this.setState({ hideHeader: this.hideHeader });
+    };
     render() {
         return (
             <div className='card'>
-                <div className='header'>
+                <div className='header' >
                     <span>我是标题</span>
-                    <icons.CaretUpOutlined className='toggle' />
+                    <icons.CaretUpOutlined className={this.hideHeader ? 'toggle fold' : 'toggle'} onClick={this.toggleHeader} />
                 </div>
-                <div className='content'>
-                    我是内容 
+                <div className={this.hideHeader ? 'content hide' : 'content'}>
+                    我是内容
                 </div>
             </div>
         );
