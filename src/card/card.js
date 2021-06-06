@@ -14,7 +14,7 @@ export class Card extends react.Component {
         return (
             <div className='card'>
                 <div className='header' >
-                    <span>我是标题</span>
+                    <span className='title'>我是标题</span>
                     <icons.CaretUpOutlined className={this.hideHeader ? 'toggle fold' : 'toggle'} onClick={this.toggleHeader} />
                 </div>
                 <div className={this.hideHeader ? 'content hide' : 'content'}>

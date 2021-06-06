@@ -9,10 +9,15 @@ div.card {
         padding: 0 8px;
         width: 100%;
         height: 40px;
-
         user-select: none;
 
+        span.title {
+            color: #636e72;
+            font-size: 18px;
+        }
+
         .toggle {
+            color: #636e72;
             cursor: pointer;
             font-size: 18px;
             transition: 200ms transform;
