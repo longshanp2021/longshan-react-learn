@@ -1,38 +1,133 @@
-import * as React from "react";
-import { Button } from "antd";
-import "./card.scss";
+import React from "react";
+import { Button, Space, Switch, Table } from "antd";
+import type { ColumnsType } from "antd/es/table";
 
-type CardProps = { name: string; age: number; gender: string; save: any };
-type CardState = { isHot: boolean; obj: any };
+interface DataType {
+  key: React.Key;
+  name: string;
+  age: number;
+  address: string;
+}
+const data: DataType[] = [];
+let columns: ColumnsType<DataType>;
 
-export class Card extends React.Component<CardProps, CardState> {
+for (let i = 0; i < 4; i++) {
+  data.push({
+    key: i,
+    name: `Edward ${i}`,
+    age: 32,
+    address: `London Park no. ${i}`,
+  });
+}
+export class Card extends React.Component {
   constructor(props: any) {
     super(props);
-    this.state = { isHot: false, obj: { name: "哈哈哈" } };
+    this.state = {
+      isHot: false,
+      obj: {},
+      defaultValue: 188,
+      type: "text",
+      value: 188,
+      textareaValue: "请撰写一篇关于你喜欢的 DOM 元素的文章.",
+    };
+
+    columns = [
+      {
+        title: "操作",
+        key: "operation",
+        fixed: "left",
+        width: 140,
+        render: () => <Button type="primary">购买商品</Button>,
+      },
+      {
+        title: "是否启用",
+        className: "row",
+        dataIndex: "status",
+        fixed: "left",
+        width: 60,
+        render: (v, item) => <Switch />,
+      },
+      {
+        title: "Column 6",
+        dataIndex: "address",
+        key: "6",
+        width: 150,
+      },
+      {
+        title: "Column 6",
+        dataIndex: "address",
+        key: "6",
+        width: 150,
+      },
+      {
+        title: "Column 6",
+        dataIndex: "address",
+        key: "6",
+        width: 150,
+      },
+      {
+        title: "Column 6",
+        dataIndex: "address",
+        key: "6",
+        width: 150,
+      },
+      {
+        title: "Column 6",
+        dataIndex: "address",
+        key: "6",
+        width: 150,
+      },
+      {
+        title: "Column 6",
+        dataIndex: "address",
+        key: "6",
+        width: 150,
+      },
+      {
+        title: "Column 6",
+        dataIndex: "address",
+        key: "6",
+        width: 150,
+      },
+      {
+        title: "Column 6",
+        dataIndex: "address",
+        key: "6",
+        width: 150,
+      },
+      {
+        title: "Column 6",
+        dataIndex: "address",
+        key: "6",
+        width: 150,
+      },
+      {
+        title: "操作2",
+        className: "row",
+        width: 120,
+        key: "operation1",
+        fixed: "right",
+        render: (_text, record) => (
+          <div>
+            <Button
+              type="primary"
+              onClick={() => {
+                this.showComBoModal(record);
+              }}
+            >
+              编辑
+            </Button>
+          </div>
+        ),
+      },
+    ];
   }
   render() {
-    console.log(this);
-    this.props.save(this.state.obj);
     return (
-      <div>
-        <Button type="primary" onClick={() => this.test()}>
-          切换
-        </Button>
-        <h1 onClick={this.weather}>
-          今天天气很{this.state.isHot ? "炎热" : "寒冷"}
-        </h1>
-        <ul>
-          <li>姓名:{this.props.name}</li>
-          <li>姓名:{this.props.age}</li>
-          <li>姓名:{this.props.gender}</li>
-        </ul>
-      </div>
+      <Table columns={columns} dataSource={data} scroll={{ x: 1000, y: 500 }} />
     );
   }
-
-  test = () => {
-    this.setState({ isHot: !this.state.isHot });
-  };
-
-  weather() {}
+  showComBoModal(e: any) {
+    console.log(e);
+  }
 }
