@@ -103,7 +103,7 @@ export class Card extends React.Component {
       },
       {
         title: "操作2",
-        className: "row",
+        // className: "row",
         width: 120,
         key: "operation1",
         fixed: "right",
